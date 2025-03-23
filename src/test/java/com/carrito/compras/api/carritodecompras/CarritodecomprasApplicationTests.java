@@ -1,13 +1,23 @@
 package com.carrito.compras.api.carritodecompras;
 
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
+
+import org.junit.jupiter.api.Test;
+
+
+
+
+
+
 class CarritodecomprasApplicationTests {
+
+	
 
 	@Test
 	void contextLoads() {
+		
+		
+
 	}
 
 }
