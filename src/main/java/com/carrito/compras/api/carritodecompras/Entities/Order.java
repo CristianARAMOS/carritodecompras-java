@@ -1,36 +1,35 @@
 package com.carrito.compras.api.carritodecompras.Entities;
 
 import java.time.LocalDate;
+import java.util.List;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
-@Entity
+@Entity(name = "Order")
 @Table(name = "orders")
 public class Order {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private long id;
-    private long usuarioId;
+
+    @ManyToOne
+    @JoinColumn( name = "user")
+    private User userId;
     private LocalDate date;
     private Double total;
     private State state;
+
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, fetch = FetchType.EAGER )
+    private List<ItemOrder> itemOrder;
     public long getId() {
         return id;
     }
     public void setId(long id) {
         this.id = id;
     }
-    public long getUsuarioId() {
-        return usuarioId;
-    }
-    public void setUsuarioId(long usuarioId) {
-        this.usuarioId = usuarioId;
-    }
+    
     public LocalDate getDate() {
         return date;
     }

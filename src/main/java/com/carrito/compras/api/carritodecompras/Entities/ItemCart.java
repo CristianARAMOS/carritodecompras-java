@@ -1,18 +1,24 @@
 package com.carrito.compras.api.carritodecompras.Entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
-@Entity
+
+@Entity(name = "ItemCart")
+@Table(name = "itemCart")
 public class ItemCart {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private long id;
-    private long cartId;
-    private long productId;
+
+    @ManyToOne
+    @JoinColumn(name = "cart")
+    private Cart cartId;
+
+    @OneToOne
+    @JoinColumn(name = "product")
+    private Product productId;
     private long cuantity;
     private Double unityPrice;
     public long getId() {
@@ -21,18 +27,7 @@ public class ItemCart {
     public void setId(long id) {
         this.id = id;
     }
-    public long getCartId() {
-        return cartId;
-    }
-    public void setCartId(long cartId) {
-        this.cartId = cartId;
-    }
-    public long getProductId() {
-        return productId;
-    }
-    public void setProductId(long productId) {
-        this.productId = productId;
-    }
+   
     public long getCuantity() {
         return cuantity;
     }
@@ -44,6 +39,18 @@ public class ItemCart {
     }
     public void setUnityPrice(Double unityPrice) {
         this.unityPrice = unityPrice;
+    }
+    public Product getProductId() {
+        return productId;
+    }
+    public void setProductId(Product productId) {
+        this.productId = productId;
+    }
+    public Cart getCartId() {
+        return cartId;
+    }
+    public void setCartId(Cart cartId) {
+        this.cartId = cartId;
     }
 
     

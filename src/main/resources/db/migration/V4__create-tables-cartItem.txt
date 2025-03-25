@@ -1,0 +1,9 @@
+CREATE TABLE cartItem (
+    id SERIAL PRIMARY KEY,
+    cartItem_id INT NOT NULL,
+    producto_id INT NOT NULL,
+    cantidad INT NOT NULL,
+    precio_unitario DECIMAL(10, 2) NOT NULL,
+    FOREIGN KEY (cartItem_id) REFERENCES Cart(id),
+    FOREIGN KEY (product_id) REFERENCES Product(id)
+);

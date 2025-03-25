@@ -1,21 +1,26 @@
 package com.carrito.compras.api.carritodecompras.Entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import java.security.PrivateKey;
+import java.util.List;
+
+import jakarta.persistence.*;
 
 
-@Entity
-@Table(name = "cartUsers")
+
+@Entity(name = "User")
+@Table(name = "users")
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private long id;
     private String name;
     private String password;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Cart> carts;
+
     public long getId() {
         return id;
     }
@@ -34,6 +39,13 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+    public List<Cart> getCarts() {
+        return carts;
+    }
+    public void setCarts(List<Cart> carts) {
+        this.carts = carts;
+    }
+    
 
     
   

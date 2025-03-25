@@ -1,0 +1,8 @@
+CREATE TABLE order (
+    id SERIAL PRIMARY KEY,
+    userr_id INT NOT NULL,
+    datee TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    total DECIMAL(10, 2) NOT NULL,
+    estado ENUM('PAUSED', 'COMPLETED', 'CANCEL') DEFAULT 'PAUSED',
+    FOREIGN KEY (userr_id) REFERENCES Userr(id)
+);

@@ -25,7 +25,7 @@ public class CartController {
 
     @GetMapping
     public List<Cart> getCarts(@RequestBody Cart cart) {
-        return cartRepository.findByUserId(cart.getUserId());
+        return cartRepository.findByUserId(cart.getUserId().getId());
     }
     
 

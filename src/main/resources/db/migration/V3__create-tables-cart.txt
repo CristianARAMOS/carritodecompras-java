@@ -1,0 +1,11 @@
+-- Primero creamos el tipo enumerado
+CREATE TYPE cart_status AS ENUM ('INPROCESS', 'COMPLETED');
+
+-- Luego creamos la tabla
+CREATE TABLE cart (
+    id SERIAL PRIMARY KEY,
+    userr_id INT NOT NULL,
+    fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    estado cart_status DEFAULT 'INPROCESS',
+    FOREIGN KEY (userr_id) REFERENCES Userr(id)
+);
