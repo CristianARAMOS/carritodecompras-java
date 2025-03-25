@@ -5,10 +5,11 @@ import jakarta.persistence.*;
 
 
 @Entity(name = "Product")
-@Table(name = "products")
+@Table(name = "product")
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private long id;
     private String name;
     private String description;

@@ -1,6 +1,6 @@
 package com.carrito.compras.api.carritodecompras.Entities;
 
-import java.security.PrivateKey;
+
 import java.util.List;
 
 import jakarta.persistence.*;
@@ -18,8 +18,11 @@ public class User {
     private String name;
     private String password;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "userId", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Cart> carts;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Order> order;
 
     public long getId() {
         return id;
@@ -44,6 +47,13 @@ public class User {
     }
     public void setCarts(List<Cart> carts) {
         this.carts = carts;
+    }
+   
+    public List<Order> getOrder() {
+        return order;
+    }
+    public void setOrder(List<Order> order) {
+        this.order = order;
     }
     
 

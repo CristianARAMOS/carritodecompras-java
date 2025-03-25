@@ -1,6 +1,0 @@
-CREATE TABLE userr (
-   id SERIAL PRIMARY KEY,
-   names varchar(100) not null,
-   email varchar(100)not null ,
-   passwordd varchar(255) not null
-);

@@ -4,16 +4,17 @@ import jakarta.persistence.* ;
 
 
 @Entity(name = "ItemOrder")
-@Table(name = "itemOrder")
+@Table(name = "orderItem")
 public class ItemOrder {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private long id;
 
     @ManyToOne
-    @JoinColumn(name = "order")
-    private Order orderId;
+    @JoinColumn(name = "itemOrder")
+    private Order itemOrder;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "product")
@@ -40,17 +41,18 @@ public class ItemOrder {
     public void setUnityPrice(Double unityPrice) {
         this.unityPrice = unityPrice;
     }
-    public Order getOrderId() {
-        return orderId;
-    }
-    public void setOrderId(Order orderId) {
-        this.orderId = orderId;
-    }
+    
     public Product getProductId() {
         return productId;
     }
     public void setProductId(Product productId) {
         this.productId = productId;
+    }
+    public Order getOrder() {
+        return itemOrder;
+    }
+    public void setOrder(Order itemOrder) {
+        this.itemOrder = itemOrder;
     }
 
     

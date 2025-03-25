@@ -17,13 +17,13 @@ public class Cart {
     private long id;
 
     @ManyToOne
-    @JoinColumn(name = "users")
+    @JoinColumn(name = "userId")
     private User userId;
 
     private LocalDate date;
 
-  
-    private List<ItemCart> itemCarts;
+    @OneToMany(mappedBy = "itemCart", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<ItemCart> itemCart;
 
     
     @Enumerated(EnumType.STRING)
@@ -47,12 +47,22 @@ public class Cart {
     public void setState(State state) {
         this.state = state;
     }
+    
+    public List<ItemCart> getItemCart() {
+        return itemCart;
+    }
+    public void setItemCart(List<ItemCart> itemCart) {
+        this.itemCart = itemCart;
+    }
+    public void setId(Long id) {
+        this.id = id;
+    }
     public User getUserId() {
         return userId;
     }
     public void setUserId(User userId) {
         this.userId = userId;
     }
-
+   
     
 }

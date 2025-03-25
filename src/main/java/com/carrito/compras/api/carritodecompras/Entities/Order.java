@@ -6,22 +6,21 @@ import java.util.List;
 import jakarta.persistence.*;
 
 @Entity(name = "Order")
-@Table(name = "orders")
+@Table(name = "order")
 public class Order {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private long id;
 
     @ManyToOne
     @JoinColumn( name = "user")
-    private User userId;
+    private User user;
     private LocalDate date;
     private Double total;
     private State state;
 
-    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, fetch = FetchType.EAGER )
+    @OneToMany(mappedBy = "itemOrder", cascade = CascadeType.ALL, fetch = FetchType.EAGER )
     private List<ItemOrder> itemOrder;
     public long getId() {
         return id;

@@ -1,7 +1,0 @@
-CREATE TABLE product (
-    id SERIAL PRIMARY KEY,
-    names VARCHAR(100) NOT NULL,
-    descriptionn TEXT,
-    price DECIMAL(10, 2) NOT NULL,
-    stock INT NOT NULL
-);

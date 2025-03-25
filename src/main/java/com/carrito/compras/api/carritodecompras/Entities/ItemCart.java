@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 
 @Entity(name = "ItemCart")
-@Table(name = "itemCart")
+@Table(name = "cartItem")
 public class ItemCart {
     
     @Id
@@ -13,25 +13,25 @@ public class ItemCart {
     private long id;
 
     @ManyToOne
-    @JoinColumn(name = "cart")
-    private Cart cartId;
+    @JoinColumn(name = "itemCart")
+    private Cart itemCart;
 
     @OneToOne
     @JoinColumn(name = "product")
-    private Product productId;
-    private long cuantity;
+    private Product product;
+    private Integer cuantity;
     private Double unityPrice;
-    public long getId() {
+    public Long getId() {
         return id;
     }
     public void setId(long id) {
         this.id = id;
     }
    
-    public long getCuantity() {
+    public Integer getCuantity() {
         return cuantity;
     }
-    public void setCuantity(long cuantity) {
+    public void setCuantity(Integer cuantity) {
         this.cuantity = cuantity;
     }
     public Double getUnityPrice() {
@@ -40,21 +40,20 @@ public class ItemCart {
     public void setUnityPrice(Double unityPrice) {
         this.unityPrice = unityPrice;
     }
-    public Product getProductId() {
-        return productId;
+    public Cart getCart() {
+        return itemCart;
     }
-    public void setProductId(Product productId) {
-        this.productId = productId;
+    public void setCart(Cart itemCart) {
+        this.itemCart = itemCart;
     }
-    public Cart getCartId() {
-        return cartId;
+    public Product getProduct() {
+        return product;
     }
-    public void setCartId(Cart cartId) {
-        this.cartId = cartId;
+    public void setProduct(Product product) {
+        this.product = product;
     }
-
+   
     
-
 
 
 }
